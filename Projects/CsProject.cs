@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace Projects
 {
-  class CsProject : Project
+  public class CsProject : Project
   {
+    string name;
+    
+    public override void Save(string file)
+    {
+        
+    }
+    
+    public static override Project Load(string file)
+    {
+      
+    }
   }
 }
