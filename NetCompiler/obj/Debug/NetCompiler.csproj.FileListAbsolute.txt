@@ -1,0 +1,5 @@
+J:\Desktop\ncIDE\NetCompiler\bin\Debug\NetCompiler.dll
+J:\Desktop\ncIDE\NetCompiler\bin\Debug\NetCompiler.pdb
+J:\Desktop\ncIDE\NetCompiler\obj\Debug\NetCompiler.csprojResolveAssemblyReference.cache
+J:\Desktop\ncIDE\NetCompiler\obj\Debug\NetCompiler.dll
+J:\Desktop\ncIDE\NetCompiler\obj\Debug\NetCompiler.pdb

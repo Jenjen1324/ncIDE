@@ -1,0 +1,5 @@
+J:\Desktop\ncIDE\Projects\obj\Debug\Projects.csprojResolveAssemblyReference.cache
+J:\Desktop\ncIDE\Projects\bin\Debug\Projects.dll
+J:\Desktop\ncIDE\Projects\bin\Debug\Projects.pdb
+J:\Desktop\ncIDE\Projects\obj\Debug\Projects.dll
+J:\Desktop\ncIDE\Projects\obj\Debug\Projects.pdb
