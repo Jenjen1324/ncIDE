@@ -16,9 +16,16 @@ namespace ncIDE
         static void Main()
         {
             project = new Projects.CsProject();
-            project.RootDir = new Projects.FileStructure.Directory() { Name = "Root", SubEntries = new List<Projects.FileStructure.FileEntry>() };
+            string rdir =  Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\ncIDE";
+            string dir = rdir + "\\root";
+            if (!System.IO.Directory.Exists(rdir)) { System.IO.Directory.CreateDirectory(rdir); }
+            if (!System.IO.Directory.Exists(dir))
+            {
+                System.IO.Directory.CreateDirectory(dir);
+            }
+            project.RootDir = new Projects.FileStructure.Directory() { Name = "Root", Path = dir, SubEntries = new List<Projects.FileStructure.FileEntry>() };
             (project.RootDir as Projects.FileStructure.Directory).SubEntries.Add(
-                    new Projects.FileStructure.CodeFile() { Name = "main.cs" , Compile = true }
+                    new Projects.FileStructure.CodeFile() { Name = "main.cs", Path = dir + "\\main.cs" , Compile = true }
                 );
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

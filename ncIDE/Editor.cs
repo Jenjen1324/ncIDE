@@ -79,5 +79,34 @@ namespace ncIDE
                 }
             }
         }
+
+        private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Node.Tag is Projects.FileStructure.File)
+            {
+                if (!tabControl1.Controls.ContainsKey((e.Node.Tag as Projects.FileStructure.File).Name))
+                {
+                    TabPage tb = new TabPage((e.Node.Tag as Projects.FileStructure.File).Name);
+                    tb.Tag = e.Node.Tag;
+                    RichTextBox rt = new RichTextBox();
+                    rt.Name = "textBox";
+                    rt.Dock = DockStyle.Fill;
+                    rt.Font = new System.Drawing.Font("Consolas", 14);
+                    rt.ContextMenuStrip = this.editorMenu;
+                    tb.Controls.Add(rt);
+                    tabControl1.TabPages.Add(tb);
+                }
+            }
+        }
+
+        private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (tabControl1.SelectedTab.Tag as Projects.FileStructure.File).Data = tabControl1.SelectedTab.Controls[0].Text;
+            (tabControl1.SelectedTab.Tag as Projects.FileStructure.File).Save();
+        }
     }
 }
