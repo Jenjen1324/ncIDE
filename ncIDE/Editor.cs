@@ -34,24 +34,50 @@ namespace ncIDE
             if(treeView1.SelectedNode.Tag is Projects.FileStructure.Directory)
             {
                 Input i = new Input();
+                i.Message = "Type a name for the file: ";
                 i.ShowDialog();
                 if(i.DialogResult == DialogResult.OK)
                 {
-                    string file = i.Text;
+                    string file = i.Value;
                     Projects.FileStructure.CodeFile cf = new Projects.FileStructure.CodeFile() { Name = file, Compile = true };
                     (treeView1.SelectedNode.Tag as Projects.FileStructure.Directory).SubEntries.Add(cf);
+                    UpdateTreeView();
                 }
             }
         }
 
         private void textFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (treeView1.SelectedNode.Tag is Projects.FileStructure.Directory)
+            {
+                Input i = new Input();
+                i.Message = "Type a name for the file: ";
+                i.ShowDialog();
+                if (i.DialogResult == DialogResult.OK)
+                {
+                    string file = i.Value;
+                    Projects.FileStructure.TextFile cf = new Projects.FileStructure.TextFile() { Name = file };
+                    (treeView1.SelectedNode.Tag as Projects.FileStructure.Directory).SubEntries.Add(cf);
+                    UpdateTreeView();
+                }
+            }
         }
 
         private void directoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (treeView1.SelectedNode.Tag is Projects.FileStructure.Directory)
+            {
+                Input i = new Input();
+                i.Message = "Type a name for the folder: ";
+                i.ShowDialog();
+                if (i.DialogResult == DialogResult.OK)
+                {
+                    string file = i.Value;
+                    Projects.FileStructure.Directory cf = new Projects.FileStructure.Directory() { Name = file, SubEntries = new List<Projects.FileStructure.FileEntry>() };
+                    (treeView1.SelectedNode.Tag as Projects.FileStructure.Directory).SubEntries.Add(cf);
+                    UpdateTreeView();
+                }
+            }
         }
     }
 }

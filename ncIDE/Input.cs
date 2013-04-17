@@ -18,7 +18,7 @@ namespace ncIDE
             this.DialogResult = System.Windows.Forms.DialogResult.None;
         }
 
-        public string Text
+        public string Value
         {
             get
             {
@@ -31,5 +31,7 @@ namespace ncIDE
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }
+
+        public string Message { set { label1.Text = value; } }
     }
 }
