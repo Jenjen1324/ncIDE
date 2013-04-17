@@ -8,15 +8,21 @@ namespace ncIDE
 {
     static class Program
     {
+        public static Projects.Project project;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+            project = new Projects.CsProject();
+            project.RootDir = new Projects.FileStructure.Directory() { Name = "Root", SubEntries = new List<Projects.FileStructure.FileEntry>() };
+            (project.RootDir as Projects.FileStructure.Directory).SubEntries.Add(
+                    new Projects.FileStructure.CodeFile() { Name = "main.cs" , Compile = true }
+                );
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Startup());
         }
     }
 }

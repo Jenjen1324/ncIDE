@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace ncIDE
 {
-    public partial class Form1 : Form
+    public partial class Startup : Form
     {
-        public Form1()
+        public Startup()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Editor ed = new Editor();
+            ed.Show();
         }
     }
 }

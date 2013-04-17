@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Projects
 {
-    public class Project
+    public interface Project
     {
-        virtual public void Save(string file);
+        void Save(string file);
 
-        virtual public static Project Load(string file);
+        void Load(string file);
+
+        FileStructure.FileEntry RootDir { get; set; }
     }
 }
