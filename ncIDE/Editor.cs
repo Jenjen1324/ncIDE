@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,7 +31,17 @@ namespace ncIDE
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            if(treeView1.SelectedNode.Tag is Projects.FileStructure.Directory)
+            {
+                Input i = new Input();
+                i.ShowDialog();
+                if(i.DialogResult == DialogResult.OK)
+                {
+                    string file = i.Text;
+                    Projects.FileStructure.CodeFile cf = new Projects.FileStructure.CodeFile() { Name = file, Compile = true };
+                    (treeView1.SelectedNode.Tag as Projects.FileStructure.Directory).SubEntries.Add(cf);
+                }
+            }
         }
 
         private void textFileToolStripMenuItem_Click(object sender, EventArgs e)
