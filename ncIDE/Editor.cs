@@ -31,7 +31,7 @@ namespace ncIDE
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(treeView1.SelectedNode.Tag is Projects.FileStructure.Directory)
+            if(treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is Projects.FileStructure.Directory)
             {
                 Input i = new Input();
                 i.Message = "Type a name for the file: ";
@@ -48,7 +48,7 @@ namespace ncIDE
 
         private void textFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode.Tag is Projects.FileStructure.Directory)
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is Projects.FileStructure.Directory)
             {
                 Input i = new Input();
                 i.Message = "Type a name for the file: ";
@@ -65,7 +65,7 @@ namespace ncIDE
 
         private void directoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode.Tag is Projects.FileStructure.Directory)
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Tag is Projects.FileStructure.Directory)
             {
                 Input i = new Input();
                 i.Message = "Type a name for the folder: ";
