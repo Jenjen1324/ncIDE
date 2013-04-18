@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LineNumbers;
+using System.CodeDom.Compiler;
 
 namespace ncIDE
 {
@@ -90,9 +91,14 @@ namespace ncIDE
                     tb.Tag = e.Node.Tag;
                     RichTextBox rt = new RichTextBox();
                     rt.Name = "textBox";
+                    rt.AcceptsTab = true;
                     rt.Dock = DockStyle.Fill;
                     rt.Font = new System.Drawing.Font("Consolas", 14);
                     rt.ContextMenuStrip = this.editorMenu;
+                    if (System.IO.File.Exists((e.Node.Tag as Projects.FileStructure.File).Path))
+                    {
+                        rt.Text = System.IO.File.ReadAllText((e.Node.Tag as Projects.FileStructure.File).Path);
+                    }
                     tb.Controls.Add(rt);
                     tabControl1.TabPages.Add(tb);
                 }
@@ -101,12 +107,50 @@ namespace ncIDE
 
         private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Program.project.RootDir.Save();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             (tabControl1.SelectedTab.Tag as Projects.FileStructure.File).Data = tabControl1.SelectedTab.Controls[0].Text;
             (tabControl1.SelectedTab.Tag as Projects.FileStructure.File).Save();
+        }
+
+        private void compileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CompilerErrorCollection errors = Program.project.Compile();
+            textBox1.Clear();
+            textBox1.AppendText("===========BUILD=========");
+            foreach (CompilerError error in errors)
+            {
+                textBox1.AppendText(error.ToString() + "\r\n");
+            }
+        }
+
+        private void saveProjectToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Program.project.Save();
+        }
+
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                compileCombo.Visible = e.Node.Tag is Projects.FileStructure.CodeFile;
+                if (e.Node.Tag is Projects.FileStructure.CodeFile)
+                {
+                    compileCombo.SelectedIndex = ((e.Node.Tag as Projects.FileStructure.CodeFile).Compile ? 0 : 1);
+                }
+            }
+        }
+
+        private void compileCombo_Click(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode != null)
+            {
+                (treeView1.SelectedNode.Tag as Projects.FileStructure.CodeFile).Compile = (compileCombo.SelectedIndex == 0);
+                UpdateTreeView();
+            }
         }
     }
 }

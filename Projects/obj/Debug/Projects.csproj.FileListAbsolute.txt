@@ -3,3 +3,5 @@ J:\Desktop\ncIDE\Projects\bin\Debug\Projects.dll
 J:\Desktop\ncIDE\Projects\bin\Debug\Projects.pdb
 J:\Desktop\ncIDE\Projects\obj\Debug\Projects.dll
 J:\Desktop\ncIDE\Projects\obj\Debug\Projects.pdb
+J:\Desktop\ncIDE\Projects\bin\Debug\NetCompiler.dll
+J:\Desktop\ncIDE\Projects\bin\Debug\NetCompiler.pdb
