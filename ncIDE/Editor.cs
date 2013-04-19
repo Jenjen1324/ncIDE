@@ -115,27 +115,9 @@ namespace ncIDE
             {
                 e.SuppressKeyPress = true;
 
-                bool count = true;
-                int i = ((RichTextBox)sender).GetFirstCharIndexOfCurrentLine();
-                StringBuilder sb = new StringBuilder();
-                while (count)
-                {
-                    if (i < ((RichTextBox)sender).Text.Length)
-                    {
-                        count = ((RichTextBox)sender).Text[i] == '\t';
-                        i++;
-                        if (count)
-                        {
-                            sb.Append("\t");
-                        }
-                    }
-                    else
-                    {
-                        count = false;
-                    }
-                }
+                string tabs = GetTabsOnLine(((RichTextBox)sender));
 
-                ((RichTextBox)sender).SelectedText = "\n" + sb.ToString();
+                ((RichTextBox)sender).SelectedText = "\n" + tabs;
             }
         }
 
@@ -215,6 +197,98 @@ namespace ncIDE
         private void closeAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabControl1.TabPages.Clear();
+        }
+
+        private void methodToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dialogs.GenMethod gm = new dialogs.GenMethod();
+            gm.ShowDialog();
+            if (gm.DialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                string aLvl = gm.AccessLvl;
+                string rTyp = gm.ReturnType;
+                string name = gm.MethodName;
+                bool isStat = gm.IsStatic;
+
+                RichTextBox rt = ((RichTextBox)tabControl1.SelectedTab.Controls[0]);
+
+                string tabs = GetTabsOnLine(rt);
+
+                rt.SelectedText = 
+                    aLvl + " " + (isStat ? "static " : "") + rTyp + " " + name + "()\n" +
+                    tabs + "{\n" +
+                    tabs + "\t//TODO: Add Code Here\n" +
+                    tabs + "}";
+            }
+        }
+
+        private static string GetTabsOnLine(RichTextBox rt)
+        {
+            bool count = true;
+            int i = rt.GetFirstCharIndexOfCurrentLine();
+            StringBuilder sb = new StringBuilder();
+            while (count)
+            {
+                if (i < rt.Text.Length)
+                {
+                    count = rt.Text[i] == '\t';
+                    i++;
+                    if (count)
+                    {
+                        sb.Append("\t");
+                    }
+                }
+                else
+                {
+                    count = false;
+                }
+            }
+
+            return sb.ToString();
+        }
+
+        private void propertyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dialogs.GenMethod gm = new dialogs.GenMethod();
+            gm.Gen = "Property";
+            gm.ShowDialog();
+            if (gm.DialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                string aLvl = gm.AccessLvl;
+                string rTyp = gm.ReturnType;
+                string name = gm.MethodName;
+                bool isStat = gm.IsStatic;
+
+                RichTextBox rt = ((RichTextBox)tabControl1.SelectedTab.Controls[0]);
+
+                string tabs = GetTabsOnLine(rt);
+
+                rt.SelectedText =
+                    aLvl + " " + (isStat ? "static " : "") + rTyp + " " + name + "\n" +
+                    tabs + "{\n" +
+                    tabs + "\tget; set; //TODO: Add custom get & set methods\n" +
+                    tabs + "}";
+            }
+        }
+
+        private void fieldToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dialogs.GenMethod gm = new dialogs.GenMethod();
+            gm.Gen = "Field";
+            gm.ShowDialog();
+            if (gm.DialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                string aLvl = gm.AccessLvl;
+                string rTyp = gm.ReturnType;
+                string name = gm.MethodName;
+                bool isStat = gm.IsStatic;
+
+                RichTextBox rt = ((RichTextBox)tabControl1.SelectedTab.Controls[0]);
+
+                string tabs = GetTabsOnLine(rt);
+
+                rt.SelectedText = aLvl + " " + (isStat ? "static " : "") + rTyp + " " + name + ";\n";
+            }
         }
     }
 }

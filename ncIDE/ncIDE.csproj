@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dialogs\GenMethod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogs\GenMethod.Designer.cs">
+      <DependentUpon>GenMethod.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,9 @@
     <Compile Include="Startup.Designer.cs">
       <DependentUpon>Startup.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="dialogs\GenMethod.resx">
+      <DependentUpon>GenMethod.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Editor.resx">
       <DependentUpon>Editor.cs</DependentUpon>
     </EmbeddedResource>

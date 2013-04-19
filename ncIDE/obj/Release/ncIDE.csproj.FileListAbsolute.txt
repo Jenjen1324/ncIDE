@@ -16,3 +16,4 @@ J:\Desktop\ncIDE\ncIDE\obj\Release\ncIDE.Startup.resources
 J:\Desktop\ncIDE\ncIDE\obj\Release\ncIDE.csproj.GenerateResource.Cache
 J:\Desktop\ncIDE\ncIDE\obj\Release\ncIDE.exe
 J:\Desktop\ncIDE\ncIDE\obj\Release\ncIDE.pdb
+J:\Desktop\ncIDE\ncIDE\obj\Release\ncIDE.dialogs.GenMethod.resources
