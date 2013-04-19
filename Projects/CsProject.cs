@@ -83,6 +83,7 @@ namespace Projects
                 }
             }
             rootDir = curdir;
+            Referances = currefs.ToArray();
             xmlr.Close();
             stream.Close();
         }

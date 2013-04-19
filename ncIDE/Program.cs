@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,7 +18,7 @@ namespace ncIDE
         [STAThread]
         static void Main()
         {
-
+            projectsFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\ncIDE";
 
             CheckStartupDirectories();
             Application.EnableVisualStyles();
@@ -27,6 +28,10 @@ namespace ncIDE
 
         private static void CheckStartupDirectories()
         {
+            if (!Directory.Exists(projectsFolder))
+            {
+                Directory.CreateDirectory(projectsFolder);
+            }
         }
     }
 }

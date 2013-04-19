@@ -139,31 +139,38 @@ namespace ncIDE
             }
         }
 
-        private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Program.project.RootDir.Save();
-        }
-
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            (tabControl1.SelectedTab.Tag as Projects.FileStructure.File).Data = tabControl1.SelectedTab.Controls[0].Text;
-            (tabControl1.SelectedTab.Tag as Projects.FileStructure.File).Save();
+            if (tabControl1.SelectedTab != null)
+            {
+                (tabControl1.SelectedTab.Tag as Projects.FileStructure.File).Data = tabControl1.SelectedTab.Controls[0].Text;
+                (tabControl1.SelectedTab.Tag as Projects.FileStructure.File).Save();
+                textBox1.Text = String.Format("File {0} saved!", (tabControl1.SelectedTab.Tag as Projects.FileStructure.File).Name);
+            }
         }
 
         private void compileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CompilerErrorCollection errors = Program.project.Compile();
             textBox1.Clear();
-            textBox1.AppendText("===========BUILD=========");
-            foreach (CompilerError error in errors)
+            textBox1.AppendText("Compile results: \r\n");
+            if (errors.Count <= 0)
             {
-                textBox1.AppendText(error.ToString() + "\r\n");
+                textBox1.AppendText("No Errors! :)");
+            }
+            else
+            {
+                foreach (CompilerError error in errors)
+                {
+                    textBox1.AppendText(error.ToString() + "\r\n");
+                }
             }
         }
 
         private void saveProjectToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Program.project.Save();
+            textBox1.Text = String.Format("Project {0} saved!", Program.project.Name);
         }
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
