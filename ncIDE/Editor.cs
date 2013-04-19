@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LineNumbers;
 using System.CodeDom.Compiler;
+using System.Diagnostics;
 
 namespace ncIDE
 {
@@ -40,7 +41,8 @@ namespace ncIDE
                 if(i.DialogResult == DialogResult.OK)
                 {
                     string file = i.Value;
-                    Projects.FileStructure.CodeFile cf = new Projects.FileStructure.CodeFile() { Name = file, Compile = true };
+                    Projects.FileStructure.CodeFile cf = new Projects.FileStructure.CodeFile() { Name = file, Parent = treeView1.SelectedNode.Tag as Projects.FileStructure.Directory, Compile = true };
+                    cf.Path = cf.Parent.Path + "\\" + file;
                     (treeView1.SelectedNode.Tag as Projects.FileStructure.Directory).SubEntries.Add(cf);
                     UpdateTreeView();
                 }
@@ -89,12 +91,14 @@ namespace ncIDE
                 {
                     TabPage tb = new TabPage((e.Node.Tag as Projects.FileStructure.File).Name);
                     tb.Tag = e.Node.Tag;
+                    tb.Name = tb.Text;
                     RichTextBox rt = new RichTextBox();
                     rt.Name = "textBox";
                     rt.AcceptsTab = true;
                     rt.Dock = DockStyle.Fill;
                     rt.Font = new System.Drawing.Font("Consolas", 14);
                     rt.ContextMenuStrip = this.editorMenu;
+                    rt.KeyDown += rt_KeyCheck;
                     if (System.IO.File.Exists((e.Node.Tag as Projects.FileStructure.File).Path))
                     {
                         rt.Text = System.IO.File.ReadAllText((e.Node.Tag as Projects.FileStructure.File).Path);
@@ -102,6 +106,36 @@ namespace ncIDE
                     tb.Controls.Add(rt);
                     tabControl1.TabPages.Add(tb);
                 }
+            }
+        }
+
+        void rt_KeyCheck(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && !e.Shift)
+            {
+                e.SuppressKeyPress = true;
+
+                bool count = true;
+                int i = ((RichTextBox)sender).GetFirstCharIndexOfCurrentLine();
+                StringBuilder sb = new StringBuilder();
+                while (count)
+                {
+                    if (i < ((RichTextBox)sender).Text.Length)
+                    {
+                        count = ((RichTextBox)sender).Text[i] == '\t';
+                        i++;
+                        if (count)
+                        {
+                            sb.Append("\t");
+                        }
+                    }
+                    else
+                    {
+                        count = false;
+                    }
+                }
+
+                ((RichTextBox)sender).SelectedText = "\n" + sb.ToString();
             }
         }
 
@@ -151,6 +185,29 @@ namespace ncIDE
                 (treeView1.SelectedNode.Tag as Projects.FileStructure.CodeFile).Compile = (compileCombo.SelectedIndex == 0);
                 UpdateTreeView();
             }
+        }
+
+        private void runToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Process.Start(Program.project.RootDir.Path + "\\" + Program.project.Name + ".exe");
+        }
+
+        private void closeThisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControl1.TabPages.Remove(tabControl1.SelectedTab);
+        }
+
+        private void closeAllButThisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (TabPage tab in tabControl1.TabPages)
+            {
+                if (tab != tabControl1.SelectedTab) { tabControl1.TabPages.Remove(tab); }
+            }
+        }
+
+        private void closeAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControl1.TabPages.Clear();
         }
     }
 }

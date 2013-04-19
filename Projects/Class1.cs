@@ -9,6 +9,8 @@ namespace Projects
 {
     public interface Project
     {
+        string Name { get; set; }
+
         void Save();
 
         void Load(string file);
