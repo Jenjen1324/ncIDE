@@ -16,3 +16,20 @@ J:\Desktop\ncIDE\ncIDE\bin\Debug\LineNumbers.xml
 J:\Desktop\ncIDE\ncIDE\obj\Debug\ncIDE.Editor.resources
 J:\Desktop\ncIDE\ncIDE\obj\Debug\ncIDE.Startup.resources
 J:\Desktop\ncIDE\ncIDE\obj\Debug\ncIDE.Input.resources
+C:\Users\Andreas Larsen\Programming\ncIDE\ncIDE\bin\Debug\ncIDE.exe.config
+C:\Users\Andreas Larsen\Programming\ncIDE\ncIDE\obj\Debug\ncIDE.exe
+C:\Users\Andreas Larsen\Programming\ncIDE\ncIDE\obj\Debug\ncIDE.pdb
+C:\Users\Andreas Larsen\Programming\ncIDE\ncIDE\bin\Debug\ncIDE.exe
+C:\Users\Andreas Larsen\Programming\ncIDE\ncIDE\bin\Debug\ncIDE.pdb
+C:\Users\Andreas Larsen\Programming\ncIDE\ncIDE\bin\Debug\NetCompiler.dll
+C:\Users\Andreas Larsen\Programming\ncIDE\ncIDE\bin\Debug\Projects.dll
+C:\Users\Andreas Larsen\Programming\ncIDE\ncIDE\bin\Debug\NetCompiler.pdb
+C:\Users\Andreas Larsen\Programming\ncIDE\ncIDE\bin\Debug\Projects.pdb
+C:\Users\Andreas Larsen\Programming\ncIDE\ncIDE\bin\Debug\LineNumbers.pdb
+C:\Users\Andreas Larsen\Programming\ncIDE\ncIDE\bin\Debug\LineNumbers.xml
+C:\Users\Andreas Larsen\Programming\ncIDE\ncIDE\obj\Debug\ncIDE.csprojResolveAssemblyReference.cache
+C:\Users\Andreas Larsen\Programming\ncIDE\ncIDE\obj\Debug\ncIDE.Editor.resources
+C:\Users\Andreas Larsen\Programming\ncIDE\ncIDE\obj\Debug\ncIDE.Input.resources
+C:\Users\Andreas Larsen\Programming\ncIDE\ncIDE\obj\Debug\ncIDE.Properties.Resources.resources
+C:\Users\Andreas Larsen\Programming\ncIDE\ncIDE\obj\Debug\ncIDE.Startup.resources
+C:\Users\Andreas Larsen\Programming\ncIDE\ncIDE\obj\Debug\ncIDE.csproj.GenerateResource.Cache

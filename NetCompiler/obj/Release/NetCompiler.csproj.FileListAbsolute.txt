@@ -1,0 +1,4 @@
+J:\Desktop\ncIDE\NetCompiler\bin\Release\NetCompiler.dll
+J:\Desktop\ncIDE\NetCompiler\bin\Release\NetCompiler.pdb
+J:\Desktop\ncIDE\NetCompiler\obj\Release\NetCompiler.dll
+J:\Desktop\ncIDE\NetCompiler\obj\Release\NetCompiler.pdb

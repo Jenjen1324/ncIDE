@@ -3,3 +3,8 @@ J:\Desktop\ncIDE\NetCompiler\bin\Debug\NetCompiler.pdb
 J:\Desktop\ncIDE\NetCompiler\obj\Debug\NetCompiler.csprojResolveAssemblyReference.cache
 J:\Desktop\ncIDE\NetCompiler\obj\Debug\NetCompiler.dll
 J:\Desktop\ncIDE\NetCompiler\obj\Debug\NetCompiler.pdb
+C:\Users\Andreas Larsen\Programming\ncIDE\NetCompiler\bin\Debug\NetCompiler.dll
+C:\Users\Andreas Larsen\Programming\ncIDE\NetCompiler\bin\Debug\NetCompiler.pdb
+C:\Users\Andreas Larsen\Programming\ncIDE\NetCompiler\obj\Debug\NetCompiler.csprojResolveAssemblyReference.cache
+C:\Users\Andreas Larsen\Programming\ncIDE\NetCompiler\obj\Debug\NetCompiler.dll
+C:\Users\Andreas Larsen\Programming\ncIDE\NetCompiler\obj\Debug\NetCompiler.pdb
