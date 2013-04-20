@@ -36,9 +36,10 @@ namespace Projects
 
         public void Load(string file)
         {
-            XmlReader xmlr = XmlReader.Create(new System.IO.FileStream(file, System.IO.FileMode.Open));
+            System.IO.FileStream stream = new System.IO.FileStream(file, System.IO.FileMode.Open);
+            XmlReader xmlr = XmlReader.Create(stream);
             List<string> currefs = new List<string>();
-            FileStructure.Directory curdir = (FileStructure.Directory)(rootDir = new FileStructure.Directory() { SubEntries = new List<FileStructure.FileEntry>(), Name = "Project" });
+            FileStructure.Directory curdir = null;
             while (xmlr.Read())
             {
                 if (xmlr.Name == "name" && xmlr.NodeType == XmlNodeType.Element)
@@ -58,13 +59,19 @@ namespace Projects
                 if (xmlr.Name == "directory" && xmlr.NodeType == XmlNodeType.Element)
                 {
                     var dir = new FileStructure.Directory() { Name = xmlr.GetAttribute("name"), Path = xmlr.GetAttribute("path"), SubEntries = new List<FileStructure.FileEntry>() };
-                    curdir.SubEntries.Add(dir);
-                    dir.Parent = curdir;
+                    if (curdir != null)
+                    {
+                        curdir.SubEntries.Add(dir);
+                        dir.Parent = curdir;
+                    }
                     curdir = dir;
                 }
                 if (xmlr.Name == "directory" & xmlr.NodeType == XmlNodeType.EndElement)
                 {
-                    curdir = curdir.Parent as FileStructure.Directory;
+                    if (curdir.Parent != null)
+                    {
+                        curdir = curdir.Parent as FileStructure.Directory;
+                    }
                 }
                 if (xmlr.Name == "file" && xmlr.NodeType == XmlNodeType.Element)
                 {
@@ -75,6 +82,10 @@ namespace Projects
                     curdir.SubEntries.Add(new FileStructure.CodeFile() { Name = xmlr.GetAttribute("name"), Path = xmlr.GetAttribute("path"), Compile = Convert.ToBoolean(xmlr.GetAttribute("compile"))});
                 }
             }
+            rootDir = curdir;
+            Referances = currefs.ToArray();
+            xmlr.Close();
+            stream.Close();
         }
 
         public FileStructure.FileEntry RootDir

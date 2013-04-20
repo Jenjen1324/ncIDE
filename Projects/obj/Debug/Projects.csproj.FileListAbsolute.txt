@@ -5,3 +5,10 @@ J:\Desktop\ncIDE\Projects\obj\Debug\Projects.dll
 J:\Desktop\ncIDE\Projects\obj\Debug\Projects.pdb
 J:\Desktop\ncIDE\Projects\bin\Debug\NetCompiler.dll
 J:\Desktop\ncIDE\Projects\bin\Debug\NetCompiler.pdb
+C:\Users\Andreas Larsen\Programming\ncIDE\Projects\bin\Debug\Projects.dll
+C:\Users\Andreas Larsen\Programming\ncIDE\Projects\bin\Debug\Projects.pdb
+C:\Users\Andreas Larsen\Programming\ncIDE\Projects\bin\Debug\NetCompiler.dll
+C:\Users\Andreas Larsen\Programming\ncIDE\Projects\bin\Debug\NetCompiler.pdb
+C:\Users\Andreas Larsen\Programming\ncIDE\Projects\obj\Debug\Projects.csprojResolveAssemblyReference.cache
+C:\Users\Andreas Larsen\Programming\ncIDE\Projects\obj\Debug\Projects.dll
+C:\Users\Andreas Larsen\Programming\ncIDE\Projects\obj\Debug\Projects.pdb

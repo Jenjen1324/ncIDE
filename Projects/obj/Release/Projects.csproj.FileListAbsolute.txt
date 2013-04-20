@@ -1,0 +1,7 @@
+J:\Desktop\ncIDE\Projects\bin\Release\Projects.dll
+J:\Desktop\ncIDE\Projects\bin\Release\Projects.pdb
+J:\Desktop\ncIDE\Projects\bin\Release\NetCompiler.dll
+J:\Desktop\ncIDE\Projects\bin\Release\NetCompiler.pdb
+J:\Desktop\ncIDE\Projects\obj\Release\Projects.csprojResolveAssemblyReference.cache
+J:\Desktop\ncIDE\Projects\obj\Release\Projects.dll
+J:\Desktop\ncIDE\Projects\obj\Release\Projects.pdb
